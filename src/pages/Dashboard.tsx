@@ -9,7 +9,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 
 const Dashboard = () => {
-  const { user, profile } = useAuth();
+  const { user, profile, isAdmin } = useAuth();
 
   const { data: myGroups = [] } = useQuery({
     queryKey: ['my-groups', user?.id],
@@ -82,6 +82,27 @@ const Dashboard = () => {
           </div>
           <Link to="/create-group"><Button><Plus className="h-4 w-4 mr-2" />Create Study Group</Button></Link>
         </div>
+
+        {isAdmin && (
+          <Link to="/admin" className="block group">
+            <div className="gradient-primary p-8 rounded-[2.5rem] flex items-center justify-between shadow-2xl shadow-primary/30 hover:scale-[1.01] transition-all duration-500 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+              <div className="flex items-center gap-6 relative">
+                <div className="h-16 w-16 bg-white/20 rounded-2xl backdrop-blur-md flex items-center justify-center">
+                  <Shield className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-extrabold text-white">Administrator Management Hub</h2>
+                  <p className="text-white/80 font-medium">Access platform auditing, user oversight, and system performance analytics.</p>
+                </div>
+              </div>
+              <Button className="bg-white text-primary hover:bg-white/90 rounded-2xl px-8 h-12 font-bold relative">
+                Enter Hub <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </div>
+          </Link>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <Card className="rounded-[2rem] border-none shadow-xl shadow-primary/5 hover-lift">
             <CardContent className="flex items-center gap-5 p-8">

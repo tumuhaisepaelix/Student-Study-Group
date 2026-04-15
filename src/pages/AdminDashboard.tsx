@@ -102,7 +102,37 @@ const AdminDashboard = () => {
     },
   });
 
+  const toggleRoleMutation = useMutation({
+    mutationFn: async ({ userId, currentRole }: { userId: string; currentRole: string }) => {
+      if (userId === user?.id) throw new Error('You cannot change your own role.');
+      
+      const newRole = currentRole === 'admin' ? 'user' : 'admin';
+      
+      // Check if role exists
+      const { data: existing } = await supabase.from('user_roles').select('*').eq('user_id', userId).maybeSingle();
+      
+      let error;
+      if (existing) {
+        ({ error } = await supabase.from('user_roles').update({ role: newRole as any }).eq('user_id', userId));
+      } else {
+        ({ error } = await supabase.from('user_roles').insert({ user_id: userId, role: newRole as any }));
+      }
+      
+      if (error) throw error;
+      return newRole;
+    },
+    onSuccess: (newRole) => {
+      queryClient.invalidateQueries({ queryKey: ['admin-all-users'] });
+      queryClient.invalidateQueries({ queryKey: ['admin-user-roles'] });
+      toast({ title: 'Role Updated', description: `User has been assigned the '${newRole}' role.` });
+    },
+    onError: (error: Error) => {
+      toast({ title: 'Role Update Failed', description: error.message, variant: 'destructive' });
+    },
+  });
+
   const totalMembers = Object.values(memberCounts).reduce((a, b) => a + b, 0);
+  const totalAdmins = userRoles.filter((r) => r.role === 'admin').length;
 
   // Most active courses
   const courseCounts: Record<string, number> = {};
@@ -132,7 +162,7 @@ const AdminDashboard = () => {
             { label: 'Total Registered Students', value: allUsers.length, icon: Users, color: 'bg-primary/10 text-primary', shadow: 'shadow-primary/5' },
             { label: 'Active Study Groups', value: allGroups.length, icon: BookOpen, color: 'bg-accent/10 text-accent', shadow: 'shadow-accent/5' },
             { label: 'Total Collaborative Memberships', value: totalMembers, icon: Activity, color: 'bg-emerald-50 text-emerald-600', shadow: 'shadow-emerald-500/5' },
-            { label: 'Scheduled Study Sessions', value: allSessions.length, icon: Clock, color: 'bg-indigo-50 text-indigo-600', shadow: 'shadow-indigo-500/5' },
+            { label: 'System Administrators', value: totalAdmins, icon: Shield, color: 'bg-indigo-50 text-indigo-600', shadow: 'shadow-indigo-500/5' },
           ].map((stat) => (
             <Card key={stat.label} className={`border-none shadow-xl ${stat.shadow} rounded-[2rem] hover-lift overflow-hidden`}>
               <CardContent className="flex items-center gap-5 p-8 relative">
@@ -180,6 +210,7 @@ const AdminDashboard = () => {
                         <TableHead className="py-6 font-bold text-xs uppercase tracking-widest text-muted-foreground text-center">Year</TableHead>
                         <TableHead className="py-6 font-bold text-xs uppercase tracking-widest text-muted-foreground">System Role</TableHead>
                         <TableHead className="py-6 font-bold text-xs uppercase tracking-widest text-muted-foreground">Joined At</TableHead>
+                        <TableHead className="py-6 px-8 text-right font-bold text-xs uppercase tracking-widest text-muted-foreground">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -207,6 +238,18 @@ const AdminDashboard = () => {
                           </TableCell>
                           <TableCell className="py-5 text-muted-foreground font-medium text-sm tabular-nums">
                             {new Date(u.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                          </TableCell>
+                          <TableCell className="py-5 px-8 text-right">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className={`rounded-xl h-10 px-4 font-bold border border-transparent transition-all ${roleMap[u.user_id] === 'admin' ? 'hover:bg-red-50 hover:text-red-600 hover:border-red-100' : 'hover:bg-primary/10 hover:text-primary hover:border-primary/20'}`}
+                              onClick={() => toggleRoleMutation.mutate({ userId: u.user_id, currentRole: roleMap[u.user_id] || 'user' })}
+                              disabled={u.user_id === user?.id || toggleRoleMutation.isPending}
+                            >
+                              <Shield className="h-4 w-4 mr-2" />
+                              {roleMap[u.user_id] === 'admin' ? 'Remove Admin' : 'Make Admin'}
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
