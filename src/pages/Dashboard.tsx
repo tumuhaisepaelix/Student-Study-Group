@@ -82,82 +82,93 @@ const Dashboard = () => {
           </div>
           <Link to="/create-group"><Button><Plus className="h-4 w-4 mr-2" />Create Study Group</Button></Link>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Card className="rounded-2xl border shadow-sm">
-            <CardContent className="flex items-center gap-4 p-5">
-              <div className="rounded-2xl bg-[#fdf2f2] p-4">
-                <Users className="h-6 w-6 text-[#9b1c1c]" />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <Card className="rounded-[2rem] border-none shadow-xl shadow-primary/5 hover-lift">
+            <CardContent className="flex items-center gap-5 p-8">
+              <div className="rounded-2xl bg-primary/10 p-4">
+                <Users className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{myGroups.length}</p>
-                <p className="text-sm text-muted-foreground">My Groups</p>
+                <p className="text-3xl font-extrabold">{myGroups.length}</p>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">My Groups</p>
               </div>
             </CardContent>
           </Card>
-          <Card className="rounded-2xl border shadow-sm">
-            <CardContent className="flex items-center gap-4 p-5">
-              <div className="rounded-2xl bg-[#fff7ed] p-4">
-                <Calendar className="h-6 w-6 text-black" />
+          <Card className="rounded-[2rem] border-none shadow-xl shadow-accent/5 hover-lift">
+            <CardContent className="flex items-center gap-5 p-8">
+              <div className="rounded-2xl bg-accent/10 p-4">
+                <Calendar className="h-8 w-8 text-accent" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{upcomingSessions.length}</p>
-                <p className="text-sm text-muted-foreground">Upcoming Sessions</p>
+                <p className="text-3xl font-extrabold">{upcomingSessions.length}</p>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Upcoming</p>
               </div>
             </CardContent>
           </Card>
-          <Card className="rounded-2xl border shadow-sm">
-            <CardContent className="flex items-center gap-4 p-5">
-              <div className="rounded-2xl bg-[#f0fdf4] p-4">
-                <BookOpen className="h-6 w-6 text-[#15803d]" />
+          <Card className="rounded-[2rem] border-none shadow-xl shadow-primary/5 hover-lift">
+            <CardContent className="flex items-center gap-5 p-8">
+              <div className="rounded-2xl bg-primary/10 p-4">
+                <BookOpen className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{totalGroups}</p>
-                <p className="text-sm text-muted-foreground">Total Groups</p>
+                <p className="text-3xl font-extrabold">{totalGroups}</p>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Hub</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div><CardTitle className="text-lg">My Study Groups</CardTitle><CardDescription>Groups you're a member of</CardDescription></div>
-              <Link to="/groups"><Button variant="ghost" size="sm">View All <ArrowRight className="h-4 w-4 ml-1" /></Button></Link>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
+            <CardHeader className="flex flex-row items-center justify-between border-b border-border/50 bg-muted/20 pb-6">
+              <div>
+                <CardTitle className="text-xl font-bold">My Study Groups</CardTitle>
+                <CardDescription>Active collaborations</CardDescription>
+              </div>
+              <Link to="/groups"><Button variant="ghost" size="sm" className="hover:bg-primary/5">View All <ArrowRight className="h-4 w-4 ml-2" /></Button></Link>
             </CardHeader>
-            <CardContent className="space-y-3">
-              {myGroups.length === 0 && <p className="text-sm text-muted-foreground text-center py-4">You haven't joined any groups yet.</p>}
+            <CardContent className="space-y-4 pt-6">
+              {myGroups.length === 0 && <p className="text-sm text-muted-foreground text-center py-8">You haven't joined any groups yet.</p>}
               {myGroups.map((group) => (
-                <Link key={group.id} to={`/groups/${group.id}`} className="block">
-                  <div className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-lg gradient-primary flex items-center justify-center">
-                        <BookOpen className="h-5 w-5 text-primary-foreground" />
+                <Link key={group.id} to={`/groups/${group.id}`} className="block group">
+                  <div className="flex items-center justify-between p-4 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-xl gradient-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                        <BookOpen className="h-6 w-6 text-white" />
                       </div>
-                      <div><p className="font-medium text-sm">{group.name}</p><p className="text-xs text-muted-foreground">{group.course_code}</p></div>
+                      <div>
+                        <p className="font-bold text-base group-hover:text-primary transition-colors">{group.name}</p>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-tight">{group.course_code}</p>
+                      </div>
                     </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                   </div>
                 </Link>
               ))}
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div><CardTitle className="text-lg">Upcoming Sessions</CardTitle><CardDescription>Your next study sessions</CardDescription></div>
-              <Link to="/sessions"><Button variant="ghost" size="sm">View All <ArrowRight className="h-4 w-4 ml-1" /></Button></Link>
+          <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
+            <CardHeader className="flex flex-row items-center justify-between border-b border-border/50 bg-muted/20 pb-6">
+              <div>
+                <CardTitle className="text-xl font-bold">Upcoming Sessions</CardTitle>
+                <CardDescription>Academic schedule</CardDescription>
+              </div>
+              <Link to="/sessions"><Button variant="ghost" size="sm" className="hover:bg-accent/5">View All <ArrowRight className="h-4 w-4 ml-2" /></Button></Link>
             </CardHeader>
-            <CardContent className="space-y-3">
-              {upcomingSessions.length === 0 && <p className="text-sm text-muted-foreground text-center py-4">No upcoming sessions.</p>}
+            <CardContent className="space-y-4 pt-6">
+              {upcomingSessions.length === 0 && <p className="text-sm text-muted-foreground text-center py-8">No upcoming sessions.</p>}
               {upcomingSessions.map((session) => (
-                <div key={session.id} className="p-3 rounded-lg border border-border/50 space-y-2">
+                <div key={session.id} className="p-5 rounded-2xl border border-border/50 hover:border-accent/30 transition-colors space-y-3 bg-white hover:shadow-md">
                   <div className="flex items-center justify-between">
-                    <p className="font-medium text-sm">{session.description}</p>
-                    <Badge variant="outline" className="text-xs">{(session.study_groups as { name: string })?.name}</Badge>
+                    <p className="font-bold text-base">{session.description}</p>
+                    <Badge variant="secondary" className="bg-accent/10 text-accent border-none font-bold uppercase text-[10px] tracking-widest px-3">
+                      {(session.study_groups as { name: string })?.name}
+                    </Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{session.session_date} · {session.session_time}</span>
-                    <span className="flex items-center gap-1"><MapPin className="h-3 w-3" />{session.location}</span>
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted-foreground">
+                    <span className="flex items-center gap-2 px-3 py-1 bg-muted/50 rounded-full"><Clock className="h-3 w-3 text-primary" />{session.session_date} · {session.session_time}</span>
+                    <span className="flex items-center gap-2 px-3 py-1 bg-muted/50 rounded-full"><MapPin className="h-3 w-3 text-accent" />{session.location}</span>
                   </div>
                 </div>
               ))}
@@ -165,20 +176,26 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <Card>
-          <CardHeader><CardTitle className="text-lg">Recently Created Groups</CardTitle><CardDescription>New groups you might want to join</CardDescription></CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
+          <CardHeader className="bg-muted/20 border-b border-border/50 pb-6">
+            <CardTitle className="text-xl font-bold">Recommended for You</CardTitle>
+            <CardDescription>New groups you might want to join</CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {recentGroups.map((group) => (
-                <Link key={group.id} to={`/groups/${group.id}`}>
-                  <div className="p-4 rounded-lg border border-border/50 hover:shadow-md transition-shadow space-y-2">
-                    <p className="font-semibold text-sm">{group.name}</p>
-                    <p className="text-xs text-muted-foreground">{group.course_name}</p>
-                    <Badge variant="secondary" className="text-xs">{group.faculty}</Badge>
+                <Link key={group.id} to={`/groups/${group.id}`} className="group">
+                  <div className="p-6 rounded-2xl border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-300 space-y-4 bg-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="relative">
+                      <p className="font-bold text-lg mb-1 group-hover:text-primary transition-colors line-clamp-1">{group.name}</p>
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-1">{group.course_name}</p>
+                      <Badge variant="secondary" className="bg-primary/5 text-primary border-none font-bold text-[10px] tracking-widest">{group.faculty}</Badge>
+                    </div>
                   </div>
                 </Link>
               ))}
-              {recentGroups.length === 0 && <p className="text-sm text-muted-foreground col-span-3 text-center py-4">No groups created yet. Be the first!</p>}
+              {recentGroups.length === 0 && <p className="text-sm text-muted-foreground col-span-3 text-center py-8">No groups created yet. Be the first!</p>}
             </div>
           </CardContent>
         </Card>
