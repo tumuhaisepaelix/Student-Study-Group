@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 20% 98%;
+    --foreground: 220 20% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 12%;
+
+    --primary: 244 80% 12%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 25% 93%;
+    --secondary-foreground: 220 20% 12%;
+
+    --muted: 30 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 220 20% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 244 80% 12%;
+
+    --radius: 0.75rem;
+
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --sidebar-background: 244 80% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 244 70% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 244 60% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 244 50% 10%;
+    --sidebar-ring: 244 80% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-sm;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(244 80% 12%), hsl(244 70% 10%));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(38 90% 55%), hsl(38 85% 48%));
+  }
+}
