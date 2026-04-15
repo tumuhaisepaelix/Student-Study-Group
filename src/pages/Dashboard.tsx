@@ -178,7 +178,7 @@ const Dashboard = () => {
 
         <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
           <CardHeader className="bg-muted/20 border-b border-border/50 pb-6">
-            <CardTitle className="text-xl font-bold">Recommended for You</CardTitle>
+            <CardTitle className="text-xl font-bold">Recently Created Groups</CardTitle>
             <CardDescription>New groups you might want to join</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
