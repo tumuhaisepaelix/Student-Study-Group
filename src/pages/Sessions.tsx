@@ -66,7 +66,7 @@ const Sessions = () => {
       setSessionForm({ date: '', time: '', location: '', description: '', groupId: '' });
       toast.success('Study session scheduled!');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   return (
@@ -155,7 +155,7 @@ const Sessions = () => {
                   </div>
                   <Badge variant="outline" className="self-start sm:self-center">
                     <Users className="h-3 w-3 mr-1" />
-                    {(session.study_groups as any)?.name}
+                    {(session.study_groups as { name: string })?.name}
                   </Badge>
                 </div>
               </CardContent>

@@ -30,7 +30,7 @@ const Register = () => {
       await signUp(form.email, form.password, form.name, form.program, parseInt(form.year));
       toast.success('Account created! You can now sign in.');
       navigate('/dashboard');
-    } catch (err: any) {
+    } catch (err: Error) {
       toast.error(err.message || 'Registration failed');
     } finally {
       setLoading(false);
