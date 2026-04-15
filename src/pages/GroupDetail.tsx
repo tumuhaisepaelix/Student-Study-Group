@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Users, MapPin, Calendar, Clock, MessageSquare, Crown, Send, Megaphone, HelpCircle, UserPlus, UserMinus, Pencil, Trash2, Settings } from 'lucide-react';
+import { Users, MapPin, Calendar, Clock, MessageSquare, Crown, Send, Megaphone, HelpCircle, UserPlus, UserMinus, Pencil, Trash2, Settings, Plus } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -94,7 +94,7 @@ const GroupDetail = () => {
       queryClient.invalidateQueries({ queryKey: ['my-groups'] });
       toast.success('Joined group!');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   const leaveMutation = useMutation({
@@ -107,7 +107,7 @@ const GroupDetail = () => {
       queryClient.invalidateQueries({ queryKey: ['my-groups'] });
       toast.success('Left group');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   const postMutation = useMutation({
@@ -124,7 +124,7 @@ const GroupDetail = () => {
       queryClient.invalidateQueries({ queryKey: ['group-posts', id] });
       setNewPost('');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   // Edit group mutation (leader only)
@@ -145,7 +145,7 @@ const GroupDetail = () => {
       setEditOpen(false);
       toast.success('Group info updated!');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   // Create session mutation (leader only)
@@ -167,7 +167,7 @@ const GroupDetail = () => {
       setSessionForm({ date: '', time: '', location: '', description: '' });
       toast.success('Study session scheduled!');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   // Remove member mutation (leader only)
@@ -180,7 +180,7 @@ const GroupDetail = () => {
       queryClient.invalidateQueries({ queryKey: ['group-members', id] });
       toast.success('Member removed');
     },
-    onError: (err: any) => toast.error(err.message),
+    onError: (err: Error) => toast.error(err.message),
   });
 
   const openEditDialog = () => {
@@ -330,7 +330,7 @@ const GroupDetail = () => {
                       {typeIcon(post.post_type)}
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium text-sm">{(post.profiles as any)?.full_name || 'Unknown'}</span>
+                          <span className="font-medium text-sm">{(post.profiles as { full_name?: string })?.full_name || 'Unknown'}</span>
                           <Badge variant="outline" className="text-xs capitalize">{post.post_type}</Badge>
                           <span className="text-xs text-muted-foreground">{new Date(post.created_at).toLocaleDateString()}</span>
                         </div>
@@ -432,11 +432,11 @@ const GroupDetail = () => {
                   <div key={member.id} className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50">
                     <div className="flex items-center gap-3">
                       <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">
-                        {((member.profiles as any)?.full_name || '?')[0]}
+                        {((member.profiles as { full_name?: string })?.full_name || '?')[0]}
                       </div>
                       <div>
-                        <p className="text-sm font-medium">{(member.profiles as any)?.full_name || 'Unknown'}</p>
-                        <p className="text-xs text-muted-foreground">{(member.profiles as any)?.program || ''}</p>
+                        <p className="text-sm font-medium">{(member.profiles as { full_name?: string })?.full_name || 'Unknown'}</p>
+                        <p className="text-xs text-muted-foreground">{(member.profiles as { program?: string })?.program || ''}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
