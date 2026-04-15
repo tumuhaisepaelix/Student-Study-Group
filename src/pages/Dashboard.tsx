@@ -153,7 +153,7 @@ const Dashboard = () => {
                 <div key={session.id} className="p-3 rounded-lg border border-border/50 space-y-2">
                   <div className="flex items-center justify-between">
                     <p className="font-medium text-sm">{session.description}</p>
-                    <Badge variant="outline" className="text-xs">{(session.study_groups as any)?.name}</Badge>
+                    <Badge variant="outline" className="text-xs">{(session.study_groups as { name: string })?.name}</Badge>
                   </div>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{session.session_date} · {session.session_time}</span>

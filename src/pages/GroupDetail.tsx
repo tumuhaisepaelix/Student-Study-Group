@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Users, MapPin, Calendar, Clock, MessageSquare, Crown, Send, Megaphone, HelpCircle, UserPlus, UserMinus, Pencil, Trash2, Settings, Plus } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -20,6 +21,7 @@ const GroupDetail = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [newPost, setNewPost] = useState('');
+  const [postType, setPostType] = useState('general');
   const [editOpen, setEditOpen] = useState(false);
   const [sessionOpen, setSessionOpen] = useState(false);
   const [editForm, setEditForm] = useState({ name: '', courseCode: '', courseName: '', description: '', location: '', faculty: '' });
@@ -116,13 +118,14 @@ const GroupDetail = () => {
         group_id: id!,
         author_id: user!.id,
         content,
-        post_type: 'general',
+        post_type: postType,
       });
       if (error) throw error;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['group-posts', id] });
       setNewPost('');
+      setPostType('general');
     },
     onError: (err: Error) => toast.error(err.message),
   });
@@ -313,9 +316,21 @@ const GroupDetail = () => {
             {isMember && (
               <Card>
                 <CardContent className="p-4">
-                  <div className="flex gap-2">
-                    <Input placeholder="Share an update, ask a question..." value={newPost} onChange={(e) => setNewPost(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handlePost()} />
-                    <Button size="icon" onClick={handlePost} disabled={postMutation.isPending}><Send className="h-4 w-4" /></Button>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Select value={postType} onValueChange={setPostType}>
+                      <SelectTrigger className="w-full sm:w-[150px]">
+                        <SelectValue placeholder="Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="general">Message</SelectItem>
+                        <SelectItem value="announcement">Announcement</SelectItem>
+                        <SelectItem value="question">Question</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <div className="flex flex-1 gap-2">
+                      <Input className="flex-1" placeholder="Share an update, ask a question..." value={newPost} onChange={(e) => setNewPost(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handlePost()} />
+                      <Button size="icon" onClick={handlePost} disabled={postMutation.isPending}><Send className="h-4 w-4" /></Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
