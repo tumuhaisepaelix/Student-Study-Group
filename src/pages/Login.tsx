@@ -21,7 +21,7 @@ const Login = () => {
     try {
       await signIn(email, password);
       navigate('/dashboard');
-    } catch (err: any) {
+    } catch (err: Error) {
       toast.error(err.message || 'Login failed');
     } finally {
       setLoading(false);
