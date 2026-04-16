@@ -16,21 +16,21 @@ const Index = () => {
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/hero-bg.png" 
-            alt="Students studying" 
+          <img
+            src="/hero-bg.png"
+            alt="Students studying"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
         </div>
-        
+
         <div className="container relative z-10 py-20 md:py-32">
           <nav className="absolute top-0 left-0 right-0 container flex items-center justify-between py-8">
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
-                <img 
-                  src="/public/favicon.ico" 
-                  alt="UCU Logo" 
+                <img
+                  src="/public/favicon.ico"
+                  alt="UCU Logo"
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
@@ -111,9 +111,9 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-primary/5 rounded-xl">
-                <img 
-                  src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png" 
-                  alt="UCU Logo" 
+                <img
+                  src="/public/favicon.ico"
+
                   className="h-10 w-auto object-contain"
                 />
               </div>

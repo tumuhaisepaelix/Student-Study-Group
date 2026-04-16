@@ -31,9 +31,9 @@ const Login = () => {
   return (
     <div className="flex min-h-screen bg-background overflow-hidden">
       <div className="hidden lg:flex lg:w-3/5 items-center justify-center p-20 relative overflow-hidden">
-        <img 
-          src="/hero-bg.png" 
-          alt="Students studying" 
+        <img
+          src="/hero-bg.png"
+          alt="Students studying"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-primary/40 to-black/80" />
@@ -46,7 +46,7 @@ const Login = () => {
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>
-            <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Hub</span></span>
+            <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Group</span></span>
           </div>
         </div>
         <div className="max-w-xl relative">
@@ -75,8 +75,8 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <div className="lg:hidden flex justify-center mb-8">
               <img
-                src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png"
-                alt="UCU Logo"
+                src="/public/favicon.ico"
+
                 className="h-12 w-auto object-contain"
               />
             </div>

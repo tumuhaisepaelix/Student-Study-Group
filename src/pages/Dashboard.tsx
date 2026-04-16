@@ -92,7 +92,7 @@ const Dashboard = () => {
                   <Shield className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-extrabold text-white">Administrator Management Hub</h2>
+                  <h2 className="text-2xl font-extrabold text-white">Administrator Management Dashboard</h2>
                   <p className="text-white/80 font-medium">Access platform auditing, user oversight, and system performance analytics.</p>
                 </div>
               </div>
@@ -133,7 +133,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <p className="text-3xl font-extrabold">{totalGroups}</p>
-                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Hub</p>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Groups</p>
               </div>
             </CardContent>
           </Card>
