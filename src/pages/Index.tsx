@@ -29,7 +29,7 @@ const Index = () => {
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
                 <img
-                  src="/favicon.ico"
+                  src="/public/image.png"
                   alt="UCU Logo"
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
