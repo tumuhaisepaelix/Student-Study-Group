@@ -4,7 +4,7 @@ import AppLayout from '@/components/AppLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Users, Calendar, BookOpen, Plus, ArrowRight, Clock, MapPin } from 'lucide-react';
+import { Users, Calendar, BookOpen, Plus, ArrowRight, Clock, MapPin, Shield } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 

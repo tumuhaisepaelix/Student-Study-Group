@@ -6,9 +6,9 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  profile: { full_name: string; program: string; year_of_study: number } | null;
+  profile: { full_name: string; program: string; year_of_study: number; faculty: string } | null;
   isAdmin: boolean;
-  signUp: (email: string, password: string, fullName: string, program: string, yearOfStudy: number) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string, program: string, yearOfStudy: number, faculty: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const fetchProfile = async (userId: string) => {
     const { data } = await supabase
       .from('profiles')
-      .select('full_name, program, year_of_study')
+      .select('full_name, program, year_of_study, faculty')
       .eq('user_id', userId)
       .single();
     setProfile(data);
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, fullName: string, program: string, yearOfStudy: number) => {
+  const signUp = async (email: string, password: string, fullName: string, program: string, yearOfStudy: number, faculty: string) => {
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     // Update profile with program and year
     const { data: { user: newUser } } = await supabase.auth.getUser();
     if (newUser) {
-      await supabase.from('profiles').update({ program, year_of_study: yearOfStudy }).eq('user_id', newUser.id);
+      await supabase.from('profiles').update({ program, year_of_study: yearOfStudy, faculty }).eq('user_id', newUser.id);
     }
   };
 

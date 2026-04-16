@@ -88,6 +88,7 @@ export type Database = {
           updated_at: string
           user_id: string
           year_of_study: number
+          faculty: string
         }
         Insert: {
           avatar_url?: string | null
@@ -98,6 +99,7 @@ export type Database = {
           updated_at?: string
           user_id: string
           year_of_study?: number
+          faculty?: string
         }
         Update: {
           avatar_url?: string | null
@@ -108,6 +110,7 @@ export type Database = {
           updated_at?: string
           user_id?: string
           year_of_study?: number
+          faculty?: string
         }
         Relationships: []
       }

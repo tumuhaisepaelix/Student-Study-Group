@@ -35,9 +35,9 @@ const Login = () => {
         <div className="absolute top-20 left-20">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md">
-              <img 
-                src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png" 
-                alt="UCU Logo" 
+              <img
+                src="/public/favicon.ico"
+                alt="UCU Logo"
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>
@@ -69,16 +69,16 @@ const Login = () => {
         <div className="w-full max-w-md space-y-8">
           <div className="text-center lg:text-left">
             <div className="lg:hidden flex justify-center mb-8">
-               <img 
-                src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png" 
-                alt="UCU Logo" 
+              <img
+                src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png"
+                alt="UCU Logo"
                 className="h-12 w-auto object-contain"
               />
             </div>
             <h2 className="text-4xl font-extrabold tracking-tight">Welcome Back</h2>
             <p className="text-muted-foreground mt-2 text-lg">Continue your journey to academic excellence.</p>
           </div>
-          
+
           <Card className="border-none shadow-2xl shadow-primary/10 rounded-[2.5rem] bg-white p-2">
             <CardContent className="p-8">
               <form onSubmit={handleLogin} className="space-y-6">

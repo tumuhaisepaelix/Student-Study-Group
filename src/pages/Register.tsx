@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 const Register = () => {
   const navigate = useNavigate();
   const { signUp } = useAuth();
-  const [form, setForm] = useState({ name: '', email: '', program: '', year: '1', password: '', confirm: '' });
+  const [form, setForm] = useState({ name: '', email: '', program: '', year: '1', faculty: '', password: '', confirm: '' });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,7 +27,7 @@ const Register = () => {
     }
     setLoading(true);
     try {
-      await signUp(form.email, form.password, form.name, form.program, parseInt(form.year));
+      await signUp(form.email, form.password, form.name, form.program, parseInt(form.year), form.faculty);
       toast.success('Account created! You can now sign in.');
       navigate('/dashboard');
     } catch (err) {
@@ -56,6 +56,19 @@ const Register = () => {
             <div className="space-y-2">
               <Label htmlFor="email">UCU Email</Label>
               <Input id="email" type="email" placeholder="student@ucu.ac.ug" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+            </div>
+            <div className="space-y-2">
+              <Label>Faculty</Label>
+              <Select value={form.faculty} onValueChange={(v) => setForm({ ...form, faculty: v })}>
+                <SelectTrigger><SelectValue placeholder="Select faculty" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Engineering, Design & Technology">Engineering, Design & Technology</SelectItem>
+                  <SelectItem value="Science">Science</SelectItem>
+                  <SelectItem value="Business & Administration">Business & Administration</SelectItem>
+                  <SelectItem value="Law">Law</SelectItem>
+                  <SelectItem value="Education">Education</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
