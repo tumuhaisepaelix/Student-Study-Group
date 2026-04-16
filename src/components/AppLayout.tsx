@@ -31,9 +31,9 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="container flex h-20 items-center justify-between">
           <Link to="/dashboard" className="flex items-center gap-4 group transition-transform hover:scale-[1.02]">
             <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md">
-              <img 
-                src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png" 
-                alt="UCU Logo" 
+              <img
+                src="/public/favicon.ico"
+                alt="UCU Logo"
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>

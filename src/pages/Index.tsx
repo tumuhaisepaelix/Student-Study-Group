@@ -23,7 +23,7 @@ const Index = () => {
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
                 <img 
-                  src="https://ucu.ac.ug/wp-content/uploads/2020/03/UCU-official-logo-Transparent-1-01.png" 
+                  src="/public/favicon.ico" 
                   alt="UCU Logo" 
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
