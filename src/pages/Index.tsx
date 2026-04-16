@@ -28,9 +28,9 @@ const Index = () => {
           <nav className="absolute top-0 left-0 right-0 container flex items-center justify-between py-8">
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
-                <img 
-                  src="/favicon.ico" 
-                  alt="UCU Logo" 
+                <img
+                  src="/public/favicon.ico"
+
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
