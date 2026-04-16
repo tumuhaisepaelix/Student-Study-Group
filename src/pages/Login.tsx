@@ -75,7 +75,7 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <div className="lg:hidden flex justify-center mb-8">
               <img
-                src="/public/favicon.ico"
+                src="/favicon.ico"
                 alt="UCU Logo"
                 className="h-12 w-auto object-contain"
               />

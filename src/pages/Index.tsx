@@ -29,8 +29,8 @@ const Index = () => {
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
                 <img
-                  src="/public/favicon.ico"
-
+                  src="/favicon.ico"
+                  alt="UCU Logo"
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
@@ -79,13 +79,18 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((f) => (
-            <div key={f.title} className="glass-card p-10 rounded-[2rem] hover-lift group border-none">
-              <div className="h-16 w-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <f.icon className="h-8 w-8 text-primary" />
+            <Link key={f.title} to="/register" className="group">
+              <div className="glass-card h-full p-10 rounded-[2.5rem] hover-lift transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 border-none group-hover:bg-white/90">
+                <div className="h-16 w-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-8 group-hover:bg-primary group-hover:scale-110 transition-all duration-500 shadow-sm">
+                  <f.icon className="h-8 w-8 text-primary group-hover:text-white transition-colors duration-500" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-primary transition-colors">{f.title}</h3>
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">{f.description}</p>
+                <div className="mt-8 flex items-center text-primary font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
+                  Try it now <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4">{f.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{f.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
