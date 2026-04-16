@@ -37,7 +37,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>
-            <span className="text-2xl font-extrabold text-white hidden sm:inline tracking-tight">StudyGroup<span className="text-accent">Hub</span></span>
+            <span className="text-2xl font-extrabold text-white hidden sm:inline tracking-tight">StudentGroup<span className="text-accent">Finder</span></span>
           </Link>
           <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (

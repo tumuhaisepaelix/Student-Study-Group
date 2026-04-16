@@ -34,7 +34,7 @@ const Index = () => {
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
-              <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Finder</span></span>
+              <span className="text-2xl font-extrabold text-white tracking-tight">StudentGroup<span className="text-accent">Finder</span></span>
             </div>
             <div className="flex gap-4">
               <Link to="/login"><Button variant="ghost" className="text-white/90 hover:text-white hover:bg-white/10 px-6">Sign In</Button></Link>
@@ -116,7 +116,7 @@ const Index = () => {
                   className="h-10 w-auto object-contain"
                 />
               </div>
-              <span className="text-2xl font-extrabold tracking-tight">StudyGroup<span className="text-primary">Finder</span></span>
+              <span className="text-2xl font-extrabold tracking-tight">StudentGroup<span className="text-primary">Finder</span></span>
             </div>
             <p className="text-muted-foreground font-medium">© 2026 Uganda Christian University. CSC1202 Project.</p>
           </div>

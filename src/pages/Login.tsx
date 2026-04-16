@@ -46,7 +46,7 @@ const Login = () => {
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>
-            <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Hub</span></span>
+            <span className="text-2xl font-extrabold text-white tracking-tight">StudentGroup<span className="text-accent">Finder</span></span>
           </div>
         </div>
         <div className="max-w-xl relative">
