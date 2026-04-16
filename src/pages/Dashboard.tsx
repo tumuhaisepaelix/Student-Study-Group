@@ -97,7 +97,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <Button className="bg-white text-primary hover:bg-white/90 rounded-2xl px-8 h-12 font-bold relative">
-                Enter Hub <ArrowRight className="h-4 w-4 ml-2" />
+                Enter Group<ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
           </Link>

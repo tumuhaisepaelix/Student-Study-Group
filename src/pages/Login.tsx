@@ -36,17 +36,17 @@ const Login = () => {
           alt="Students studying"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-primary/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#001529]/95 via-[#001529]/60 to-[#001529]/95" />
         <div className="absolute top-20 left-20">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md">
               <img
-                src="/public/favicon.ico"
+                src="/favicon.ico"
                 alt="UCU Logo"
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
             </div>
-            <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Group</span></span>
+            <span className="text-2xl font-extrabold text-white tracking-tight">StudyGroup<span className="text-accent">Hub</span></span>
           </div>
         </div>
         <div className="max-w-xl relative">
@@ -75,8 +75,8 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <div className="lg:hidden flex justify-center mb-8">
               <img
-                src="/public/favicon.ico"
-
+                src="/favicon.ico"
+                alt="UCU Logo"
                 className="h-12 w-auto object-contain"
               />
             </div>

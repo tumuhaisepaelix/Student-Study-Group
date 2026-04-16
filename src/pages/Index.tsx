@@ -21,16 +21,16 @@ const Index = () => {
             alt="Students studying"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001529]/95 via-[#001529]/70 to-[#001529]/30" />
         </div>
 
         <div className="container relative z-10 py-20 md:py-32">
           <nav className="absolute top-0 left-0 right-0 container flex items-center justify-between py-8">
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
-                <img
-                  src="/public/favicon.ico"
-                  alt="UCU Logo"
+                <img 
+                  src="/favicon.ico" 
+                  alt="UCU Logo" 
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
@@ -112,8 +112,7 @@ const Index = () => {
             <div className="flex items-center gap-4">
               <div className="p-2 bg-primary/5 rounded-xl">
                 <img
-                  src="/public/favicon.ico"
-
+                  src="/favicon.ico"
                   className="h-10 w-auto object-contain"
                 />
               </div>

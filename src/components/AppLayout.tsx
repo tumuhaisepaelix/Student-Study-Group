@@ -32,7 +32,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           <Link to="/dashboard" className="flex items-center gap-4 group transition-transform hover:scale-[1.02]">
             <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md">
               <img
-                src="/public/favicon.ico"
+                src="/favicon.ico"
                 alt="UCU Logo"
                 className="h-8 w-auto object-contain brightness-0 invert"
               />
