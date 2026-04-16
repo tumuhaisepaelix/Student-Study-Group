@@ -30,8 +30,13 @@ const Login = () => {
 
   return (
     <div className="flex min-h-screen bg-background overflow-hidden">
-      <div className="hidden lg:flex lg:w-3/5 gradient-primary items-center justify-center p-20 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
+      <div className="hidden lg:flex lg:w-3/5 items-center justify-center p-20 relative overflow-hidden">
+        <img 
+          src="/hero-bg.png" 
+          alt="Students studying" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-primary/40 to-black/80" />
         <div className="absolute top-20 left-20">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md">

@@ -13,12 +13,18 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="gradient-primary relative overflow-hidden min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
-        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/hero-bg.png" 
+            alt="Students studying" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+        </div>
         
-        <div className="container relative py-20 md:py-32">
+        <div className="container relative z-10 py-20 md:py-32">
           <nav className="absolute top-0 left-0 right-0 container flex items-center justify-between py-8">
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md group-hover:bg-white/20 transition-colors">
@@ -41,22 +47,22 @@ const Index = () => {
               <GraduationCap className="h-4 w-4 text-accent" />
               <span className="text-white/90 text-xs font-semibold uppercase tracking-widest">Uganda Christian University</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8">
+            <h1 className="text-6xl md:text-8xl font-black text-white leading-[1] tracking-tight mb-8 animate-in slide-in-from-left duration-700">
               Collaborate. <br />
-              <span className="text-accent">Innovate.</span> <br />
+              <span className="text-accent underline decoration-accent/30 underline-offset-8">Innovate.</span> <br />
               Succeed.
             </h1>
-            <p className="text-xl text-white/80 max-w-xl leading-relaxed mb-10">
-              The premier platform for UCU students to connect, form elite study groups, and master their courses together.
+            <p className="text-xl md:text-2xl text-white/80 max-w-xl leading-relaxed mb-12 animate-in slide-in-from-left duration-700 delay-100 italic">
+              Empowering UCU students to connect, form elite study groups, and master their academic journey together.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-5 animate-in slide-in-from-left duration-700 delay-200">
               <Link to="/register">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/95 px-8 py-7 text-lg shadow-2xl shadow-black/20">
-                  Join a Group <ArrowRight className="h-5 w-5 ml-2" />
+                <Button size="lg" className="bg-accent text-white hover:bg-accent/90 px-10 py-8 text-xl rounded-2xl shadow-2xl shadow-accent/20 transition-all hover:scale-105 active:scale-95 font-bold">
+                  Join a Group <ArrowRight className="h-6 w-6 ml-2" />
                 </Button>
               </Link>
               <Link to="/login">
-                <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 px-8 py-7 text-lg backdrop-blur-sm">
+                <Button size="lg" variant="outline" className="text-white border-white/40 hover:bg-white/10 px-10 py-8 text-xl rounded-2xl backdrop-blur-md transition-all hover:border-white font-bold">
                   Explore Hub
                 </Button>
               </Link>
